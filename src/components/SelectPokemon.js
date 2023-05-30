@@ -26,7 +26,7 @@ export default function SelectPokemon({
           href={
             selectedPoke &&
             selectedPokeSecond &&
-            `/fight?firstPoke=${selectedPoke._id}&&secondPoke=${selectedPokeSecond._id}`
+            `https://pokemongame-115x.onrender.com/fight?firstPoke=${selectedPoke._id}&&secondPoke=${selectedPokeSecond._id}`
           }
           variant="contained"
         >

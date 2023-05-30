@@ -19,7 +19,9 @@ export default function App() {
   const [selectedPokemons3v3, setSelectedPokemons3v3] = React.useState();
 
   const fetchPokemons = async () => {
-    const response = await axios.get("http://localhost:5000/api");
+    const response = await axios.get(
+      "https://pokemongame-115x.onrender.com/api"
+    );
     setLoaded(true);
 
     setPokemons(response.data);
