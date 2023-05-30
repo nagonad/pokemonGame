@@ -7,11 +7,14 @@ const cors = require("cors");
 const axios = require("axios");
 const connectDB = require("./db");
 const pokemon = require("./routes/pokemon");
+const path = require("path");
 
 // app.use(express.json({ limit: "50mb" }));
 // app.use(express.urlencoded({ limit: "50mb" }));
 
 connectDB();
+
+app.use(express.static(path.join(__dirname, "../build")));
 
 app.use(cors());
 
