@@ -6,6 +6,7 @@ import Fight from "./components/Fight";
 import LandingPage from "./components/LandingPage";
 import SelectPokemon3v3 from "./components/SelectPokemon3v3";
 import Fight3v3 from "./components/Fight3v3";
+import Loading from "./components/Loading";
 
 export default function App() {
   const [pokemons, setPokemons] = React.useState([]);
@@ -41,42 +42,46 @@ export default function App() {
 
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<LandingPage loaded={loaded} />} />
-        <Route
-          path="/selection1v1"
-          element={
-            <SelectPokemon
-              pokemons={pokemons}
-              firstPokeSelect={firstPokeSelect}
-              secondPokeSelect={secondPokeSelect}
-              selectedPoke={selectedPoke}
-              selectedPokeSecond={selectedPokeSecond}
-            />
-          }
-        />
-        <Route
-          path="/selection3v3"
-          element={
-            <SelectPokemon3v3
-              selectedPokemons3v3={selectedPokemons3v3}
-              setSelectedPokemons3v3={setSelectedPokemons3v3}
-              pokemons={pokemons}
-            />
-          }
-        />
+      {!loaded ? (
+        <Loading></Loading>
+      ) : (
+        <Routes>
+          <Route path="/" element={<LandingPage loaded={loaded} />} />
+          <Route
+            path="/selection1v1"
+            element={
+              <SelectPokemon
+                pokemons={pokemons}
+                firstPokeSelect={firstPokeSelect}
+                secondPokeSelect={secondPokeSelect}
+                selectedPoke={selectedPoke}
+                selectedPokeSecond={selectedPokeSecond}
+              />
+            }
+          />
+          <Route
+            path="/selection3v3"
+            element={
+              <SelectPokemon3v3
+                selectedPokemons3v3={selectedPokemons3v3}
+                setSelectedPokemons3v3={setSelectedPokemons3v3}
+                pokemons={pokemons}
+              />
+            }
+          />
 
-        <Route path="/fight" element={<Fight pokemons={pokemons} />} />
-        <Route
-          path="/fight3v3"
-          element={
-            <Fight3v3
-              pokemons={pokemons}
-              selectedPokemons3v3={selectedPokemons3v3}
-            />
-          }
-        />
-      </Routes>
+          <Route path="/fight" element={<Fight pokemons={pokemons} />} />
+          <Route
+            path="/fight3v3"
+            element={
+              <Fight3v3
+                pokemons={pokemons}
+                selectedPokemons3v3={selectedPokemons3v3}
+              />
+            }
+          />
+        </Routes>
+      )}
     </div>
   );
 }

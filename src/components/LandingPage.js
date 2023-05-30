@@ -5,9 +5,7 @@ import img from "../images/pokemonGrass.png";
 import img2 from "../images/File-01.svg";
 
 export default function LandingPage({ loaded }) {
-  return !loaded ? (
-    <Loading />
-  ) : (
+  return (
     <div
       style={{
         width: "100vw",
