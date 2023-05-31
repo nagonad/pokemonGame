@@ -7,8 +7,12 @@ import LandingPage from "./components/LandingPage";
 import SelectPokemon3v3 from "./components/SelectPokemon3v3";
 import Fight3v3 from "./components/Fight3v3";
 import Loading from "./components/Loading";
+import backgroundMusic from "./music/pokemon_music.mp3";
+import { Button } from "@material-ui/core";
 
 export default function App() {
+  const [isPlaying, setIsPlaying] = React.useState(false);
+
   const [pokemons, setPokemons] = React.useState([]);
 
   const [loaded, setLoaded] = React.useState(false);
@@ -32,6 +36,27 @@ export default function App() {
     fetchPokemons();
   }, []);
 
+  React.useEffect(() => {
+    const audio = new Audio(backgroundMusic);
+    audio.loop = true;
+    audio.volume = 0.3;
+
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, [isPlaying]);
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   const firstPokeSelect = (event, value) => {
     setSelectedPoke(value);
   };
@@ -42,6 +67,11 @@ export default function App() {
 
   return (
     <div>
+      <div style={{ position: "fixed", right: "20px", top: "20px" }}>
+        <Button variant="contained" onClick={togglePlay}>
+          {isPlaying ? "Pause Music" : "Play Music"}
+        </Button>
+      </div>
       {!loaded ? (
         <Loading></Loading>
       ) : (
