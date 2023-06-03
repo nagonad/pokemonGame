@@ -13,12 +13,16 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 export default function SelectPokemon({
+  setBgColor,
   pokemons,
   firstPokeSelect,
   selectedPokeSecond,
   secondPokeSelect,
   selectedPoke,
 }) {
+  React.useEffect(() => {
+    setBgColor(true);
+  }, []);
   return (
     <div className="outherContainer">
       <div>

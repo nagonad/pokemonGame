@@ -18,6 +18,7 @@ const theme2 = createTheme({
 });
 
 export default function SelectPokemon3v3({
+  setBgColor,
   selectedPokemons3v3,
   setSelectedPokemons3v3,
   pokemons,
@@ -38,6 +39,10 @@ export default function SelectPokemon3v3({
       });
     }
   };
+
+  React.useEffect(() => {
+    setBgColor(true);
+  }, []);
 
   React.useEffect(() => {
     setSelectedPokemons3v3(

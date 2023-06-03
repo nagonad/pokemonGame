@@ -2,6 +2,7 @@
   font-family: "Poke";
   src: local("Poke"), url(../fonts/PressStart2P-Regular.ttf) format("truetype");
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -11,13 +12,6 @@
 .App {
   text-align: center;
 }
-
-/* .app-poke-container {
-   width: 300px; 
-   height: 300px; 
-   display: flex;
-  flex-direction: row; 
-} */
 
 .app-poke-container img {
   width: 300px;

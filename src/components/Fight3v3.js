@@ -1,6 +1,7 @@
 import * as React from "react";
 import Fight1v1 from "./Fight1v1";
 import Winner from "./Winner";
+import { truncate } from "lodash";
 
 export default function Fight3v3({ selectedPokemons3v3 }) {
   const [round, setRound] = React.useState(0);
