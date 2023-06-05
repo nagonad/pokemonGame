@@ -28,9 +28,7 @@ export default function App() {
   const [selectedPokemons3v3, setSelectedPokemons3v3] = React.useState();
 
   const fetchPokemons = async () => {
-    const response = await axios.get(
-      "https://pokemongame-115x.onrender.com/api"
-    );
+    const response = await axios.get("http://localhost:5000/api");
     setLoaded(true);
 
     setPokemons(response.data);
@@ -44,7 +42,7 @@ export default function App() {
   React.useEffect(() => {
     const audio = new Audio(backgroundMusic);
     audio.loop = true;
-    audio.volume = 0.3;
+    audio.volume = 0.2;
 
     if (isPlaying) {
       audio.play();
@@ -79,11 +77,10 @@ export default function App() {
         left: "0",
         top: "0",
         backgroundImage: `url(${bgColor ? bg_white : bg})`,
-        backgroundRepeat: "repeat",
-        backgroundSize: "contain",
+        // backgroundRepeat: "repeat",
+        // backgroundSize: "contain",
         display: "flex",
         justifyContent: "center",
-        overflow: "scroll",
       }}
     >
       <div style={{ position: "fixed", right: "20px", top: "20px" }}>

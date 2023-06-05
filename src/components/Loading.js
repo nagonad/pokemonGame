@@ -25,8 +25,8 @@ const Loading = () => {
       <div style={{ width: "600px" }}>
         <Typography sx={{ color: "white" }}>Loading{dots}</Typography>
         <Typography sx={{ color: "white" }}>
-          Please wait. It will take around 30 seconds this website to recover
-          itself!
+          Please wait. It will take around 30 seconds for this website to
+          recover itself!
         </Typography>
       </div>
     </div>
