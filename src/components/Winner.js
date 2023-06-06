@@ -65,7 +65,7 @@ export default function Winner({ score, selectedPokemons3v3 }) {
       <div className="winnerPokeContainer">
         <Card
           sx={{
-            width: "150px",
+            width: "200px",
             padding: "1rem",
             display: "flex",
             flexDirection: "column",
@@ -84,7 +84,7 @@ export default function Winner({ score, selectedPokemons3v3 }) {
         </Card>
         <Card
           sx={{
-            width: "150px",
+            width: "200px",
             padding: "1rem",
             display: "flex",
             flexDirection: "column",
@@ -105,7 +105,7 @@ export default function Winner({ score, selectedPokemons3v3 }) {
       <div className="winnerPokeContainer">
         <Card
           sx={{
-            width: "150px",
+            width: "200px",
             padding: "1rem",
             display: "flex",
             flexDirection: "column",
@@ -124,7 +124,7 @@ export default function Winner({ score, selectedPokemons3v3 }) {
         </Card>
         <Card
           sx={{
-            width: "150px",
+            width: "200px",
             padding: "1rem",
             display: "flex",
             flexDirection: "column",
@@ -146,7 +146,7 @@ export default function Winner({ score, selectedPokemons3v3 }) {
       <div className="winnerPokeContainer">
         <Card
           sx={{
-            width: "150px",
+            width: "200px",
             padding: "1rem",
             display: "flex",
             flexDirection: "column",
@@ -165,7 +165,7 @@ export default function Winner({ score, selectedPokemons3v3 }) {
         </Card>
         <Card
           sx={{
-            width: "150px",
+            width: "200px",
             padding: "1rem",
             display: "flex",
             flexDirection: "column",

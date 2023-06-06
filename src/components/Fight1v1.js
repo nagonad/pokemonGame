@@ -235,7 +235,9 @@ export default function Fight1v1({
   }, []);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div
+      style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}
+    >
       <div className="fightContainer">
         <Box sx={{ width: "200px", position: "absolute", top: 10, left: 10 }}>
           <div className="barContainer">
