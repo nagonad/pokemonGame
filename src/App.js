@@ -11,6 +11,8 @@ import backgroundMusic from "./music/pokemon_music.mp3";
 import { Button } from "@material-ui/core";
 import bg from "./images/body_bg.png";
 import bg_white from "./images/container_bg.png";
+import Navbar from "./components/Navbar";
+import Leaderboard from "./components/Leaderboard";
 
 export default function App() {
   const [bgColor, setBgColor] = React.useState(false);
@@ -28,9 +30,10 @@ export default function App() {
   const [selectedPokemons3v3, setSelectedPokemons3v3] = React.useState();
 
   const fetchPokemons = async () => {
-    const response = await axios.get("http://localhost:5000/api");
+    const response = await axios.get(
+      "https://pokemongame-115x.onrender.com/api"
+    );
     setLoaded(true);
-
     setPokemons(response.data);
   };
 
@@ -79,15 +82,9 @@ export default function App() {
         backgroundImage: `url(${bgColor ? bg_white : bg})`,
         // backgroundRepeat: "repeat",
         // backgroundSize: "contain",
-        display: "flex",
-        justifyContent: "center",
       }}
     >
-      <div style={{ position: "fixed", right: "20px", top: "20px" }}>
-        <Button variant="contained" onClick={togglePlay}>
-          {isPlaying ? "Pause Music" : "Play Music"}
-        </Button>
-      </div>
+      <Navbar isPlaying={isPlaying} togglePlay={togglePlay}></Navbar>
       {!loaded ? (
         <Loading></Loading>
       ) : (
@@ -131,6 +128,10 @@ export default function App() {
                 selectedPokemons3v3={selectedPokemons3v3}
               />
             }
+          />
+          <Route
+            path="/leaderboard"
+            element={<Leaderboard pokemons={pokemons}></Leaderboard>}
           />
         </Routes>
       )}

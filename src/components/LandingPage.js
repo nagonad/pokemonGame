@@ -5,8 +5,10 @@ import { ReactComponent as Logo } from "../images/File-01.svg";
 
 export default function LandingPage({ loaded }) {
   return (
-    <div>
-      <Logo fill="white" />
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <Logo style={{ width: "500px", height: "auto" }} fill="white" />
       <div
         style={{
           width: "500px",

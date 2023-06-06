@@ -6,6 +6,8 @@ const pokemonSchema = new mongoose.Schema({
   base: mongoose.Schema.Types.Mixed,
   imageUrl: String,
   backImageUrl: String,
+  matches: Number,
+  wins: Number,
 });
 
 module.exports = mongoose.model("Pokemon", pokemonSchema);

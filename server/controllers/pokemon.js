@@ -47,6 +47,8 @@ const resetServer = async (req, res) => {
         el.imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${el.id}.png`;
         el.backImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${el.id}.png`;
         el.base = newBase;
+        el.matches = 0;
+        el.wins = 0;
       });
 
       const pokemon = await Pokemon.insertMany(poke);
@@ -56,9 +58,31 @@ const resetServer = async (req, res) => {
       res.send("Something went wrong with deleting all data");
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error });
   }
 };
 
-module.exports = { createPokemon, resetServer, getAllPokemons };
+const saveResult = async (req, res) => {
+  const updates = [
+    {
+      updateMany: {
+        filter: { _id: { $in: req.body.match } },
+        update: { $inc: { matches: +1 } },
+      },
+    },
+    {
+      updateMany: {
+        filter: { _id: { $in: req.body.winner } },
+        update: { $inc: { wins: +1 } },
+      },
+    },
+  ];
+  try {
+    const resp = await Pokemon.bulkWrite(updates);
+    res.status(200).json(resp);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+
+module.exports = { createPokemon, resetServer, getAllPokemons, saveResult };

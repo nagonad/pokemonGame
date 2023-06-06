@@ -2,8 +2,36 @@ import * as React from "react";
 import { Divider, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import _ from "lodash";
+import axios from "axios";
 
 export default function Winner({ score, selectedPokemons3v3 }) {
+  const saveResult = async () => {
+    if (score && selectedPokemons3v3) {
+      let arr = [...score.firstPoke, ...score.secondPoke];
+      let newArr = [];
+      selectedPokemons3v3.forEach((el, index) => {
+        if (arr[index]) {
+          newArr.push(el._id);
+        }
+      });
+
+      let newPokemonArr = [];
+      selectedPokemons3v3.forEach((el) => {
+        newPokemonArr.push(el._id);
+      });
+
+      let newObj = { match: newPokemonArr, winner: newArr };
+
+      let response = await axios.post(
+        "https://pokemongame-115x.onrender.com/api/recordResult",
+        newObj
+      );
+    }
+  };
+
+  React.useEffect(() => {
+    saveResult();
+  }, [score, selectedPokemons3v3]);
   return (
     <div className="winnerBody">
       <div className="textContainer">
